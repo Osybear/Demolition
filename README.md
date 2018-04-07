@@ -1,4 +1,8 @@
-# Demolition
+# Demolition 
+Start Date : 4/7/18
+End Date : TBD
+
+Description:
 The player starts with a set amount of explosives. 
 Infront of the player there is a tower of cubes that he can place the explosives.
 The player can then press a button to detonate the explosives.
