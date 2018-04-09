@@ -6,5 +6,7 @@ The player can then press a button to detonate the explosives.
 For every cube that is knocked out of place the player earns one point.
 
 Controls: 
+
 WASD : rotate camera
+
 Scroll Wheel : zoom camera in and out
