@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class CameraController : MonoBehaviour {
@@ -22,44 +23,48 @@ public class CameraController : MonoBehaviour {
         m_ZPos = m_MainCamera.transform.localPosition.z;
     }
 
-    void Update () {
-        HandleRotationMovement();
-    }
-
-    private void HandleRotationMovement()
+    void Update ()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Instructions.m_Completed == true)
         {
-            m_YRot += 1 * m_RotateSpeed;
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(0);
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                m_YRot += 1 * m_RotateSpeed;
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                m_YRot += -1 * m_RotateSpeed;
+            }
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                m_XRot += 1 * m_RotateSpeed;
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                m_XRot += -1 * m_RotateSpeed;
+            }
+
+            if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+            {
+                m_ZPos += Input.GetAxis("Mouse ScrollWheel") * m_ScrollSpeed;
+            }
+
+            m_XRot = Mathf.Clamp(m_XRot, m_XRotMin, m_XRotMax);
+
+            Quaternion Rotation = Quaternion.Euler(m_XRot, m_YRot, 0f);
+
+            Vector3 Position = new Vector3(0, 0, m_ZPos);
+
+            transform.localRotation = Rotation;
+            m_MainCamera.transform.localPosition = Position;
         }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            m_YRot += -1 * m_RotateSpeed;
-        }
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            m_XRot += 1 * m_RotateSpeed;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            m_XRot += -1 * m_RotateSpeed;
-        }
-
-        if (Input.GetAxis("Mouse ScrollWheel") != 0f) // forward
-        {
-            m_ZPos += Input.GetAxis("Mouse ScrollWheel") * m_ScrollSpeed;
-        }
-
-        m_XRot = Mathf.Clamp(m_XRot, m_XRotMin, m_XRotMax);
-
-        Quaternion Rotation = Quaternion.Euler(m_XRot, m_YRot, 0f);
-
-        Vector3 Position = new Vector3(0, 0, m_ZPos);
-
-        transform.localRotation = Rotation;
-        m_MainCamera.transform.localPosition = Position;
     }
 }

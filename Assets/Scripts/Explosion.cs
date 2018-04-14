@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour {
 
-    private float m_Radius = 2.0F;
-    private float m_Force = 500.0F;
+    public float m_Radius = 1;
+    public float m_Force = 500;
     private float m_UpwardsModifier = 0;
 
     private void Start()
