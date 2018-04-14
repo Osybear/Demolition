@@ -31,7 +31,7 @@ public class Instructions : MonoBehaviour {
 
     private void Awake()
     {
-        m_Completed = true;
+        m_Completed = false;
         m_Clear = Color.green;
     }
 
