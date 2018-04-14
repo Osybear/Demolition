@@ -5,7 +5,12 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour {
 
     public Text m_ScoreText;
-    public static int m_ScoreAmount = 0;
+    public static int m_ScoreAmount;
+
+    private void Awake()
+    {
+        m_ScoreAmount = 0;    
+    }
 
     private void Update()
     {
