@@ -16,14 +16,14 @@ public class CameraController : MonoBehaviour {
     private float m_XRotMax = 60; // Minimum rotation on the x axis
 
     private float m_RotateSpeed = 1;
-    private float m_ScrollSpeed = 5;
+    private float m_ScrollSpeed = 10;
 
     private void Start()
     {
         m_ZPos = m_MainCamera.transform.localPosition.z;
     }
 
-    void Update ()
+    void Update()
     {
         if (Instructions.m_Completed == true)
         {
