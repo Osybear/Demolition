@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class Instructions : MonoBehaviour {
 
-    public GameObject m_Holder;
+    public GameObject m_Help;
+    public GameObject m_Controls;
+    public GameObject m_Goal;
     public static bool m_Completed;
 
     private void Awake()
     {
-        m_Completed = false;    
+        m_Help.SetActive(false);
+        m_Controls.SetActive(false);
     }
 
-    private void Update()
+    public void Continue()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            m_Holder.SetActive(true);
-            m_Completed = false;
-        }
-
+        m_Goal.SetActive(false);
+        m_Help.SetActive(true);
     }
 
-    public void HideInstructions()
+    public void Help()
     {
-        m_Completed = true;
-        m_Holder.SetActive(false);
+        m_Controls.SetActive(!m_Controls.activeInHierarchy);
     }
 }
