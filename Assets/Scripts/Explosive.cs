@@ -20,9 +20,9 @@ public class Explosive : MonoBehaviour
     {
         if (Instructions.m_Completed == true)
         {
-            PlaceExplosive();
-            ExplosiveReference();
             IncreaseExplosiveSize();
+            ExplosiveReference();
+            PlaceExplosive();
         }
     }
 
@@ -55,6 +55,11 @@ public class Explosive : MonoBehaviour
         {
             Vector3 Position = hit.point;
             m_ExplosivePrefab.transform.position = hit.point;
+            m_ExplosivePrefab.transform.localScale = new Vector3(m_Radius, m_Radius, m_Radius);
+        }
+        else
+        {
+            m_ExplosivePrefab.transform.localScale = new Vector3(0, 0, 0);
         }
     }
 
@@ -72,7 +77,6 @@ public class Explosive : MonoBehaviour
             m_Force += 50;
         }
 
-        m_ExplosivePrefab.transform.localScale = new Vector3(m_Radius, m_Radius, m_Radius);
         m_Radius = Mathf.Clamp(m_Radius, 1, float.MaxValue);
         m_Force = Mathf.Clamp(m_Force, 50, float.MaxValue);
     }
