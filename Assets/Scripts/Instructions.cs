@@ -11,6 +11,7 @@ public class Instructions : MonoBehaviour {
 
     private void Awake()
     {
+        m_Completed = false;
         m_Help.SetActive(false);
         m_Controls.SetActive(false);
     }
@@ -19,6 +20,7 @@ public class Instructions : MonoBehaviour {
     {
         m_Goal.SetActive(false);
         m_Help.SetActive(true);
+        m_Completed = true;
     }
 
     public void Help()
